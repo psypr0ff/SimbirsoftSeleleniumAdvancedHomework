@@ -1,9 +1,14 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 import pages.way2autoJqueryDroppablePage;
 import pages.way2autoJqueryLoginPage;
 import pages.way2autoJqueryMainPage;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by Александр on 27.04.2018.
@@ -17,9 +22,12 @@ public class seleniumAdvancedTest {
     String pass = "12345678";
 
     @BeforeTest
-    public void init() throws InterruptedException {
+    public void init() throws InterruptedException, MalformedURLException {
         System.setProperty("webdriver.chrome.driver", "C:\\seleniumgrid\\chromedriver.exe");
-        driver = new ChromeDriver();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setBrowserName("chrome");
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+        //driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://way2automation.com/way2auto_jquery");
         Thread.sleep(1000);
