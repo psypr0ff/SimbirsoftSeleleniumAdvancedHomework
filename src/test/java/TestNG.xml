@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite System "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="AutotestsCrome" verbase="1" parallel="classes" annotation="JDK">
+    <test name="Test_Chrome">
+        <classes>
+            <class name="seleniumAdvancedTest" />
+        </classes>
+    </test>
+</suite>
